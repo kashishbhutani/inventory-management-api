@@ -17,6 +17,10 @@ module ExceptionHandler
       render_error(e.message, :bad_request)
     end
 
+    rescue_from ActiveRecord::InvalidForeignKey do |e|
+      render_error(e.message, :bad_request)
+    end
+
     rescue_from ActiveRecord::Validations do |e|
       render_error(e.message, :unprocessable_entity)
     end

@@ -27,6 +27,12 @@ module Api
         render_data(employee, :created)
       end
 
+      def destroy
+        employee = EmployeeDeletionService.call(params[:id])
+
+        render_data(employee)
+      end
+
       private
 
       def employee_params
